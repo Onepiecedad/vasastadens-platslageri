@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "villa-hisingen",
+    "title": "Villa i Hisingen",
+    "category": "Takarbeten",
+    "location": "Hisingen, Göteborg",
+    "year": "2024",
+    "description": "Komplett takbyte på villa i Hisingen. Nytt taktäckningsmaterial och renovering av takfot.",
+    "longDescription": "Detta projekt omfattade ett komplett takbyte på en villa i Hisingen. Vi ersatte det gamla taktäckningsmaterialet med moderna plåtlösningar som ger både långvarig hållbarhet och estetisk tilltalande utseende. Projektet inkluderade även renovering av takfot och montering av nya stuprör.",
+    "services": ["Takbyte", "Plåtarbeten", "Takfot"],
+    "imageUrl": "",
+    "featured": true
+  },
+  {
+    "slug": "kontorsbyggnad-molndal",
+    "title": "Kontorsbyggnad i Mölndal",
+    "category": "Fasadplåt",
+    "location": "Mölndal",
+    "year": "2023",
+    "description": "Modern fasadplåt i aluminium för kontorsbyggnad.",
+    "longDescription": "Vi monterade modern fasadplåt i aluminium på en kontorsbyggnad i Mölndal. Fasaden ger byggnaden ett modernt och professionellt utseende samtidigt som den är underhållsfri och hållbar.",
+    "services": ["Fasadplåt", "Aluminiumarbeten"],
+    "imageUrl": "",
+    "featured": true
+  },
+  {
+    "slug": "industrihall-frolunda",
+    "title": "Industrihall i Frölunda",
+    "category": "Entreprenad",
+    "location": "Frölunda, Göteborg",
+    "year": "2023",
+    "description": "Nybyggnation av tak och fasad för industrihall.",
+    "longDescription": "Omfattande entreprenadprojekt för nybyggnation av industrihall i Frölunda. Vi ansvarade för både tak- och fasadarbeten, vilket inkluderade plåttak och fasadplåt i ett sammanhängande system.",
+    "services": ["Tak", "Fasad", "Entreprenad"],
+    "imageUrl": "",
+    "featured": false
+  },
+  {
+    "slug": "radhus-gotaland",
+    "title": "Radhusområde i Göteborg",
+    "category": "Service",
+    "location": "Göteborg",
+    "year": "2024",
+    "description": "Servicearbeten och mindre reparationer på radhusområde.",
+    "longDescription": "Regelbundna servicearbeten för radhusområde, inklusive kontroll av takavvattning, reparation av stuprör och mindre plåtarbeten.",
+    "services": ["Service", "Underhåll", "Reparationer"],
+    "imageUrl": "",
+    "featured": false
+  }
+]
