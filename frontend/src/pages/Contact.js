@@ -60,13 +60,13 @@ const Contact = () => {
       
       <Breadcrumbs items={[{ label: 'Kontakt' }]} />
       
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-light">
         <div className="max-w-content mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
-            <div>
-              <h2 className="text-3xl font-bold text-granite mb-6">Begär Offert</h2>
-              <p className="text-lg text-gray-600 mb-8">
+            <div className="bg-white p-8 lg:p-10 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up">
+              <h2 className="text-4xl font-semibold text-granite mb-6">Begär Offert</h2>
+              <p className="text-lg text-neutral mb-8">
                 Fyll i formuläret nedan så återkommer vi inom 24 timmar.
               </p>
               
@@ -88,7 +88,7 @@ const Contact = () => {
               
               <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
                 <div>
-                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+                  <label htmlFor="name" className="block text-neutral font-medium mb-2">
                     Namn *
                   </label>
                   <input
@@ -98,13 +98,13 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                     data-testid="contact-form-name"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+                  <label htmlFor="email" className="block text-neutral font-medium mb-2">
                     E-post *
                   </label>
                   <input
@@ -114,13 +114,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                     data-testid="contact-form-email"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
+                  <label htmlFor="phone" className="block text-neutral font-medium mb-2">
                     Telefon *
                   </label>
                   <input
@@ -130,13 +130,13 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                     data-testid="contact-form-phone"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="service" className="block text-gray-700 font-medium mb-2">
+                  <label htmlFor="service" className="block text-neutral font-medium mb-2">
                     Tjänst av intresse
                   </label>
                   <select
@@ -144,7 +144,7 @@ const Contact = () => {
                     name="service"
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                     data-testid="contact-form-service"
                   >
                     <option value="Takarbeten">Takarbeten</option>
@@ -156,7 +156,7 @@ const Contact = () => {
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+                  <label htmlFor="message" className="block text-neutral font-medium mb-2">
                     Meddelande *
                   </label>
                   <textarea
@@ -166,7 +166,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                     data-testid="contact-form-message"
                   ></textarea>
                 </div>
@@ -174,7 +174,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors flex items-center justify-center disabled:opacity-50"
+                  className="w-full bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
                   data-testid="contact-form-submit"
                 >
                   {loading ? (
@@ -189,9 +189,9 @@ const Contact = () => {
             </div>
             
             {/* Contact Information */}
-            <div>
-              <h2 className="text-3xl font-bold text-granite mb-6">Kontaktinformation</h2>
-              <p className="text-lg text-gray-600 mb-8">
+            <div className="bg-white p-8 lg:p-10 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay">
+              <h2 className="text-4xl font-semibold text-granite mb-6">Kontaktinformation</h2>
+              <p className="text-lg text-neutral mb-8">
                 Du är alltid välkommen att kontakta oss direkt via telefon eller e-post.
               </p>
               
@@ -202,10 +202,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-granite mb-1">Telefon</h3>
-                    <a href="tel:031-123456" className="text-gray-600 hover:text-copper transition-colors">
+                    <a href="tel:031-123456" className="text-neutral hover:text-copper transition-colors">
                       031-123 456
                     </a>
-                    <p className="text-sm text-gray-500 mt-1">Vardagar 7:00 - 17:00</p>
+                    <p className="text-sm text-neutral/70 mt-1">Vardagar 7:00 - 17:00</p>
                   </div>
                 </div>
                 
@@ -215,7 +215,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-granite mb-1">E-post</h3>
-                    <a href="mailto:info@vasastadens.se" className="text-gray-600 hover:text-copper transition-colors">
+                    <a href="mailto:info@vasastadens.se" className="text-neutral hover:text-copper transition-colors">
                       info@vasastadens.se
                     </a>
                   </div>
@@ -227,7 +227,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-granite mb-1">Adress</h3>
-                    <p className="text-gray-600">
+                    <p className="text-neutral">
                       Vasagatan 12<br />
                       411 24 Göteborg
                     </p>
@@ -235,9 +235,9 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="bg-gray-100 p-8 rounded-lg">
-                <h3 className="text-xl font-bold text-granite mb-4">Öppettider</h3>
-                <div className="space-y-2 text-gray-700">
+              <div className="bg-light p-8 rounded-xl border border-[#D1D5DB]/60">
+                <h3 className="text-xl font-semibold text-granite mb-4">Öppettider</h3>
+                <div className="space-y-2 text-neutral">
                   <div className="flex justify-between">
                     <span>Måndag - Fredag</span>
                     <span className="font-medium">7:00 - 17:00</span>

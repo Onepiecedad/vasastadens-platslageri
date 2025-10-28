@@ -17,23 +17,23 @@ const Header = () => {
   ];
   
   return (
-    <header className="bg-granite text-white sticky top-0 z-50 shadow-lg" data-testid="main-header">
+    <header className="bg-granite/95 text-white sticky top-0 z-50 shadow-[0_20px_40px_rgba(28,42,54,0.18)] border-b border-white/10 backdrop-blur-sm" data-testid="main-header">
       <div className="max-w-content mx-auto px-6">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-3" data-testid="logo-link">
-            <div className="text-2xl font-bold">
+          <Link to="/" className="flex items-center space-x-3 animate-fade-in-up" data-testid="logo-link">
+            <div className="text-2xl font-semibold tracking-[0.08em] uppercase">
               <span className="text-copper">Vasastadens</span> Plåtslageri
             </div>
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 animate-fade-in-up-delay">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-base font-medium transition-colors hover-copper ${
-                  isActive(link.path) ? 'text-copper' : 'text-white'
+                className={`text-sm font-medium tracking-wide transition-all duration-300 ${
+                  isActive(link.path) ? 'text-copper' : 'text-white/80 hover:text-copper'
                 }`}
                 data-testid={`nav-${link.label.toLowerCase()}`}
               >
@@ -42,7 +42,7 @@ const Header = () => {
             ))}
             <Link
               to="/kontakt"
-              className="bg-copper hover:bg-copper-dark text-white px-6 py-2 rounded font-medium transition-colors"
+              className="bg-copper hover:bg-copper-dark text-white px-7 py-2.5 rounded-full font-semibold transition-colors shadow-lg shadow-black/10"
               data-testid="cta-offert-button"
             >
               Begär offert
@@ -67,8 +67,8 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`block py-3 text-base font-medium transition-colors hover-copper ${
-                  isActive(link.path) ? 'text-copper' : 'text-white'
+                className={`block py-3 text-base font-medium transition-colors ${
+                  isActive(link.path) ? 'text-copper' : 'text-white/80 hover:text-copper'
                 }`}
                 data-testid={`mobile-nav-${link.label.toLowerCase()}`}
               >
@@ -78,7 +78,7 @@ const Header = () => {
             <Link
               to="/kontakt"
               onClick={() => setIsMenuOpen(false)}
-              className="block mt-4 bg-copper text-white px-6 py-3 rounded font-medium text-center"
+              className="block mt-4 bg-copper text-white px-6 py-3 rounded-full font-semibold text-center shadow-lg shadow-black/10"
               data-testid="mobile-cta-offert-button"
             >
               Begär offert

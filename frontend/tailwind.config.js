@@ -14,12 +14,12 @@ module.exports = {
                 },
                 colors: {
                         // Vasastadens custom colors
-                        'granite': '#1a1a1a',
-                        'granite-light': '#2d2d2d',
-                        'copper': '#b87333',
-                        'copper-dark': '#8b5a2b',
-                        'navy': '#1e3a5f',
-                        'navy-light': '#2c4e7a',
+                        'granite': '#1C2A36',
+                        'granite-light': '#253748',
+                        'copper': '#4B6475',
+                        'copper-dark': '#3C5566',
+                        'navy': '#1C2A36',
+                        'navy-light': '#2B3E52',
                         
                         background: 'hsl(var(--background))',
                         foreground: 'hsl(var(--foreground))',

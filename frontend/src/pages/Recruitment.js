@@ -75,25 +75,30 @@ const Recruitment = () => {
       
       <Breadcrumbs items={[{ label: 'Rekrytering' }]} />
       
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-light">
         <div className="max-w-content mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-granite mb-4">Lediga Tjänster</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl text-granite mb-4">Lediga Tjänster</h2>
+            <p className="text-lg text-neutral max-w-2xl mx-auto">
               Vi söker alltid duktiga och motiverade hantverkare. Se våra lediga tjänster nedan.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {positions.map((position, index) => (
-              <div key={index} className="bg-gray-50 p-8 rounded-lg" data-testid={`position-${index}`}>
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                data-testid={`position-${index}`}
+              >
                 <div className="flex items-start space-x-4 mb-4">
                   <div className="bg-copper/10 p-3 rounded-lg">
                     <Briefcase className="text-copper" size={24} />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-granite mb-2">{position.title}</h3>
-                    <p className="text-gray-600">{position.description}</p>
+                    <h3 className="text-2xl font-semibold text-granite mb-2">{position.title}</h3>
+                    <p className="text-neutral">{position.description}</p>
                   </div>
                 </div>
                 <div className="mt-6">
@@ -102,7 +107,7 @@ const Recruitment = () => {
                     {position.requirements.map((req, idx) => (
                       <li key={idx} className="flex items-start space-x-2">
                         <span className="w-2 h-2 bg-copper rounded-full mt-2 flex-shrink-0"></span>
-                        <span className="text-gray-700">{req}</span>
+                        <span className="text-neutral">{req}</span>
                       </li>
                     ))}
                   </ul>
@@ -113,12 +118,12 @@ const Recruitment = () => {
         </div>
       </section>
       
-      <section className="py-20 bg-gray-50">
+      <section className="py-24 bg-white">
         <div className="max-w-content mx-auto px-6">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-granite mb-4">Ansök Nu</h2>
-              <p className="text-lg text-gray-600">
+            <div className="text-center mb-12 animate-fade-in-up">
+              <h2 className="text-4xl md:text-5xl text-granite mb-4">Ansök Nu</h2>
+              <p className="text-lg text-neutral">
                 Fyll i formuläret nedan så hör vi av oss.
               </p>
             </div>
@@ -139,9 +144,9 @@ const Recruitment = () => {
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-lg" data-testid="job-application-form">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-light p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay" data-testid="job-application-form">
               <div>
-                <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="name" className="block text-neutral font-medium mb-2">
                   Namn *
                 </label>
                 <input
@@ -151,13 +156,13 @@ const Recruitment = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                   data-testid="job-form-name"
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="email" className="block text-neutral font-medium mb-2">
                   E-post *
                 </label>
                 <input
@@ -167,13 +172,13 @@ const Recruitment = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                   data-testid="job-form-email"
                 />
               </div>
               
               <div>
-                <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="phone" className="block text-neutral font-medium mb-2">
                   Telefon *
                 </label>
                 <input
@@ -183,13 +188,13 @@ const Recruitment = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                   data-testid="job-form-phone"
                 />
               </div>
               
               <div>
-                <label htmlFor="position" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="position" className="block text-neutral font-medium mb-2">
                   Tjänst av intresse
                 </label>
                 <select
@@ -197,7 +202,7 @@ const Recruitment = () => {
                   name="position"
                   value={formData.position}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                   data-testid="job-form-position"
                 >
                   <option value="Plåtslagare">Plåtslagare</option>
@@ -207,7 +212,7 @@ const Recruitment = () => {
               </div>
               
               <div>
-                <label htmlFor="experience" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="experience" className="block text-neutral font-medium mb-2">
                   Erfarenhet (år) *
                 </label>
                 <input
@@ -218,13 +223,13 @@ const Recruitment = () => {
                   onChange={handleChange}
                   required
                   placeholder="T.ex. 5 år"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                   data-testid="job-form-experience"
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
+                <label htmlFor="message" className="block text-neutral font-medium mb-2">
                   Personligt brev *
                 </label>
                 <textarea
@@ -235,7 +240,7 @@ const Recruitment = () => {
                   required
                   rows={6}
                   placeholder="Berätta lite om dig själv och varför du vill arbeta hos oss..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-copper focus:border-copper"
+                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
                   data-testid="job-form-message"
                 ></textarea>
               </div>
@@ -243,7 +248,7 @@ const Recruitment = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-copper hover:bg-copper-dark text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors flex items-center justify-center disabled:opacity-50"
+                className="w-full bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
                 data-testid="job-form-submit"
               >
                 {loading ? (
