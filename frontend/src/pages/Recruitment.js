@@ -70,7 +70,7 @@ const Recruitment = () => {
         title="Arbeta Hos Oss"
         subtitle="Bli en del av vårt team"
         imageUrl="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[{ label: 'Rekrytering' }]} />
@@ -88,7 +88,7 @@ const Recruitment = () => {
             {positions.map((position, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in-up"
+                className="bg-white p-6 sm:p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-lg hover:shadow-2xl transition-all duration-500 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
                 data-testid={`position-${index}`}
               >
@@ -144,7 +144,7 @@ const Recruitment = () => {
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-6 bg-light p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay" data-testid="job-application-form">
+            <form onSubmit={handleSubmit} className="space-y-6 bg-light p-6 sm:p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay" data-testid="job-application-form">
               <div>
                 <label htmlFor="name" className="block text-neutral font-medium mb-2">
                   Namn *
@@ -248,7 +248,7 @@ const Recruitment = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
+                className="w-full bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
                 data-testid="job-form-submit"
               >
                 {loading ? (

@@ -36,7 +36,7 @@ const About = () => {
         title="Om Vasastadens Plåtslageri"
         subtitle="Över 50 års erfarenhet av kvalitetsarbete"
         imageUrl="https://images.unsplash.com/photo-1635424709845-3a85ad5e1f5e?w=1920&q=80"
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[{ label: 'Om oss' }]} />
@@ -133,14 +133,14 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-lg">
             <Link
               to="/rekrytering"
-              className="inline-block bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all shadow-xl shadow-black/10"
+              className="inline-block bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all shadow-xl shadow-black/10"
               data-testid="careers-cta-button"
             >
               Lediga tjänster
             </Link>
             <Link
               to="/kontakt"
-              className="inline-block bg-white/10 hover:bg-white/20 text-white px-9 py-4 rounded-full text-lg font-semibold transition-all border border-white/20 backdrop-blur-sm"
+              className="inline-block bg-white/10 hover:bg-white/20 text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all border border-white/20 backdrop-blur-sm"
               data-testid="contact-cta-button"
             >
               Kontakta oss

@@ -8,7 +8,7 @@ const Privacy = () => {
         title="Integritetspolicy"
         subtitle="Hur vi hanterar dina personuppgifter"
         imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[{ label: 'Integritetspolicy' }]} />

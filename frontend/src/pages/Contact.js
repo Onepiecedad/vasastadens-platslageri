@@ -55,7 +55,7 @@ const Contact = () => {
         title="Kontakta Oss"
         subtitle="Vi ser fram emot att höra från dig"
         imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[{ label: 'Kontakt' }]} />
@@ -64,7 +64,7 @@ const Contact = () => {
         <div className="max-w-content mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Contact Form */}
-            <div className="bg-white p-8 lg:p-10 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up">
+            <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up">
               <h2 className="text-4xl font-semibold text-granite mb-6">Begär Offert</h2>
               <p className="text-lg text-neutral mb-8">
                 Fyll i formuläret nedan så återkommer vi inom 24 timmar.
@@ -174,7 +174,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
+                  className="w-full bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
                   data-testid="contact-form-submit"
                 >
                   {loading ? (
@@ -189,7 +189,7 @@ const Contact = () => {
             </div>
             
             {/* Contact Information */}
-            <div className="bg-white p-8 lg:p-10 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay">
+            <div className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay">
               <h2 className="text-4xl font-semibold text-granite mb-6">Kontaktinformation</h2>
               <p className="text-lg text-neutral mb-8">
                 Du är alltid välkommen att kontakta oss direkt via telefon eller e-post.
@@ -235,7 +235,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="bg-light p-8 rounded-xl border border-[#D1D5DB]/60">
+              <div className="bg-light p-6 sm:p-8 rounded-xl border border-[#D1D5DB]/60">
                 <h3 className="text-xl font-semibold text-granite mb-4">Öppettider</h3>
                 <div className="space-y-2 text-neutral">
                   <div className="flex justify-between">

@@ -41,7 +41,7 @@ const Services = () => {
         title="Våra Tjänster"
         subtitle="Kompletta lösningar för tak och fasad"
         imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[{ label: 'Tjänster' }]} />
@@ -103,7 +103,7 @@ const Services = () => {
           </p>
           <Link
             to="/kontakt"
-            className="inline-block bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all shadow-xl shadow-black/10 animate-fade-in-up-delay-lg"
+            className="inline-block bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all shadow-xl shadow-black/10 animate-fade-in-up-delay-lg"
             data-testid="services-cta-button"
           >
             Begär offert

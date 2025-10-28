@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Hero = ({ title, subtitle, imageUrl, ctaText, ctaLink, height = 'h-[600px]' }) => {
+const Hero = ({ title, subtitle, imageUrl, ctaText, ctaLink, height = 'min-h-[420px] md:h-[600px]' }) => {
   return (
     <div className={`relative ${height} flex items-center justify-center overflow-hidden`} data-testid="hero-section">
       {/* Background Image */}
@@ -28,7 +28,7 @@ const Hero = ({ title, subtitle, imageUrl, ctaText, ctaLink, height = 'h-[600px]
         {ctaText && ctaLink && (
           <Link
             to={ctaLink}
-            className="inline-block bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-colors shadow-xl"
+            className="inline-block bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-colors shadow-xl"
             data-testid="hero-cta-button"
           >
             {ctaText}

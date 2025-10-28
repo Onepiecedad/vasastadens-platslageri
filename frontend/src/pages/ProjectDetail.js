@@ -53,7 +53,7 @@ const ProjectDetail = () => {
         title={project.title}
         subtitle={`${project.location} · ${project.year}`}
         imageUrl={project.imageUrl || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80'}
-        height="h-[500px]"
+        height="min-h-[380px] md:h-[500px]"
       />
       
       <Breadcrumbs items={[
@@ -148,7 +148,7 @@ const ProjectDetail = () => {
           <h2 className="text-3xl md:text-4xl font-semibold text-granite mb-6 animate-fade-in-up">Se fler projekt</h2>
           <Link
             to="/projekt"
-            className="inline-block bg-granite hover:bg-granite-light text-white px-9 py-4 rounded-full text-lg font-semibold transition-all shadow-lg shadow-black/10 animate-fade-in-up-delay"
+            className="inline-block bg-granite hover:bg-granite-light text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all shadow-lg shadow-black/10 animate-fade-in-up-delay"
             data-testid="view-more-projects-button"
           >
             Visa alla projekt

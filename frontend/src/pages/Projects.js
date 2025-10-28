@@ -40,7 +40,7 @@ const Projects = () => {
         title="Våra Projekt"
         subtitle="Se exempel på vårt arbete och låt dig inspireras"
         imageUrl="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[{ label: 'Projekt' }]} />

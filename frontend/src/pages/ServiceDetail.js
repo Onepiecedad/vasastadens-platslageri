@@ -115,7 +115,7 @@ const ServiceDetail = () => {
         title={service.title}
         subtitle={service.subtitle}
         imageUrl={service.image}
-        height="h-[400px]"
+        height="min-h-[360px] md:h-[400px]"
       />
       
       <Breadcrumbs items={[

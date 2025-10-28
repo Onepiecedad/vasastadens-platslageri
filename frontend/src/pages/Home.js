@@ -124,14 +124,14 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-lg">
             <Link
               to="/kontakt"
-              className="inline-block bg-copper hover:bg-copper-dark text-white px-9 py-4 rounded-full text-lg font-semibold transition-all shadow-xl shadow-black/10"
+              className="inline-block bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all shadow-xl shadow-black/10"
               data-testid="cta-contact-button"
             >
               Begär offert
             </Link>
             <a
               href="tel:031-123456"
-              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white px-9 py-4 rounded-full text-lg font-semibold transition-all border border-white/20 backdrop-blur-sm"
+              className="inline-flex items-center justify-center bg-white/10 hover:bg-white/20 text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all border border-white/20 backdrop-blur-sm"
               data-testid="cta-phone-button"
             >
               <Phone size={20} className="mr-2" />
@@ -153,7 +153,7 @@ const Home = () => {
           <div className="text-center animate-fade-in-up-delay">
             <Link
               to="/projekt"
-              className="inline-block bg-granite hover:bg-granite-light text-white px-9 py-4 rounded-full text-lg font-semibold transition-colors shadow-lg shadow-black/10"
+              className="inline-block bg-granite hover:bg-granite-light text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-colors shadow-lg shadow-black/10"
               data-testid="view-all-projects-button"
             >
               Se alla projekt
