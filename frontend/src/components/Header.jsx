@@ -17,23 +17,30 @@ const Header = () => {
   ];
   
   return (
-    <header className="bg-granite/95 text-white sticky top-0 z-50 shadow-[0_20px_40px_rgba(28,42,54,0.18)] border-b border-white/10 backdrop-blur-sm" data-testid="main-header">
-      <div className="max-w-content mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-3 animate-fade-in-up" data-testid="logo-link">
-            <div className="text-2xl font-semibold tracking-[0.08em] uppercase">
-              <span className="text-copper">Vasastadens</span> Plåtslageri
+    <header className="bg-granite/95 text-white sticky top-0 z-50 shadow-[0_20px_40px_rgba(20,32,45,0.25)] border-b border-white/10 backdrop-blur-sm" data-testid="main-header">
+      <div className="max-w-content mx-auto px-6 lg:px-10">
+        <div className="flex items-center justify-between py-5 lg:py-7">
+          <Link to="/" className="flex items-center animate-fade-in-up" data-testid="logo-link">
+            <div className="leading-tight">
+              <span className="block text-[12px] uppercase tracking-[0.55em] text-white/75">
+                Vasastadens
+              </span>
+              <span className="block text-[22px] sm:text-[26px] font-semibold text-white drop-shadow">
+                Bleck &amp; Plåtslageri
+              </span>
             </div>
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8 animate-fade-in-up-delay">
+          <nav className="hidden md:flex items-center space-x-6 xl:space-x-9 animate-fade-in-up-delay">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium tracking-wide transition-all duration-300 ${
-                  isActive(link.path) ? 'text-copper' : 'text-white/80 hover:text-copper'
+                className={`text-base font-semibold tracking-wide transition-all duration-300 rounded-full px-3 py-1 ${
+                  isActive(link.path)
+                    ? 'text-copper bg-white/10 shadow-[0_4px_12px_rgba(0,0,0,0.12)]'
+                    : 'text-white/90 hover:text-white hover:bg-white/10'
                 }`}
                 data-testid={`nav-${link.label.toLowerCase()}`}
               >
@@ -42,7 +49,7 @@ const Header = () => {
             ))}
             <Link
               to="/kontakt"
-              className="bg-copper hover:bg-copper-dark text-white px-7 py-2.5 rounded-full font-semibold transition-colors shadow-lg shadow-black/10"
+              className="bg-copper hover:bg-copper-dark text-white px-8 py-3 rounded-full text-base font-semibold transition-colors shadow-lg shadow-black/15"
               data-testid="cta-offert-button"
             >
               Begär offert
@@ -68,7 +75,7 @@ const Header = () => {
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
                 className={`block py-3 text-base font-medium transition-colors ${
-                  isActive(link.path) ? 'text-copper' : 'text-white/80 hover:text-copper'
+                  isActive(link.path) ? 'text-copper' : 'text-white/90 hover:text-white'
                 }`}
                 data-testid={`mobile-nav-${link.label.toLowerCase()}`}
               >

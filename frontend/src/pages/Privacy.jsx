@@ -1,13 +1,15 @@
 import Hero from '@/components/Hero';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import { useScrollToHero } from '@/hooks/useScrollToHero';
 
 const Privacy = () => {
+  useScrollToHero([]);
   return (
     <div data-testid="privacy-page">
       <Hero
         title="Integritetspolicy"
         subtitle="Hur vi hanterar dina personuppgifter"
-        imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
+        imageUrl="/images/roof-seam-detail.png"
         height="min-h-[360px] md:h-[400px]"
       />
       
@@ -18,7 +20,7 @@ const Privacy = () => {
           <div className="prose prose-lg max-w-none animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-semibold text-granite mb-6">Personuppgiftsansvarig</h2>
             <p className="text-neutral mb-8">
-              Vasastadens Plåtslageri AB är personuppgiftsansvarig för behandlingen av dina personuppgifter.
+              Vasastadens Bleck &amp; Plåtslageri AB är personuppgiftsansvarig för behandlingen av dina personuppgifter.
             </p>
             
             <h2 className="text-3xl md:text-4xl font-semibold text-granite mb-6 mt-12">Vilka personuppgifter samlar vi in?</h2>
@@ -75,7 +77,7 @@ const Privacy = () => {
             </p>
             <div className="bg-white p-6 rounded-2xl border border-[#D1D5DB]/60 shadow-lg">
               <p className="text-neutral">
-                <strong>Vasastadens Plåtslageri AB</strong><br />
+                <strong>Vasastadens Bleck &amp; Plåtslageri AB</strong><br />
                 Vasagatan 12<br />
                 411 24 Göteborg<br />
                 E-post: info@vasastadens.se<br />

@@ -3,49 +3,41 @@ import axios from 'axios';
 import Hero from '@/components/Hero';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Phone, Mail, MapPin, Send, CheckCircle } from 'lucide-react';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import { useScrollToHero } from '@/hooks/useScrollToHero';
+import { API_BASE } from '@/lib/api';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { contactFormSchema, formDefaultValues } from '@/lib/validation';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: 'Takarbeten',
-    message: ''
-  });
-  const [loading, setLoading] = useState(false);
+  useScrollToHero([]);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
-  
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: formDefaultValues.contact,
+    mode: 'onBlur',
+  });
+
+  const onSubmit = async (values) => {
+    setErrorMessage('');
+    setSubmitted(false);
     try {
-      await axios.post(`${API}/contact`, formData);
+      await axios.post(`${API_BASE}/contact`, values);
       setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: 'Takarbeten',
-        message: ''
-      });
+      reset(formDefaultValues.contact, { keepDefaultValues: true });
     } catch (err) {
-      setError('Ett fel uppstod. Vänligen försök igen eller ring oss direkt.');
+      const detail =
+        err.response?.data?.detail ||
+        'Ett fel uppstod. Vänligen försök igen eller ring oss direkt.';
+      setErrorMessage(detail);
       console.error('Error submitting form:', err);
-    } finally {
-      setLoading(false);
     }
   };
   
@@ -54,7 +46,7 @@ const Contact = () => {
       <Hero
         title="Kontakta Oss"
         subtitle="Vi ser fram emot att höra från dig"
-        imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
+        imageUrl="/images/gutter-service.png"
         height="min-h-[360px] md:h-[400px]"
       />
       
@@ -80,13 +72,21 @@ const Contact = () => {
                 </div>
               )}
               
-              {error && (
+              {errorMessage && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 text-red-700" data-testid="error-message">
-                  {error}
+                  {errorMessage}
                 </div>
               )}
               
-              <form onSubmit={handleSubmit} className="space-y-6" data-testid="contact-form">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" data-testid="contact-form" noValidate>
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                  {...register('honeypot')}
+                />
                 <div>
                   <label htmlFor="name" className="block text-neutral font-medium mb-2">
                     Namn *
@@ -95,12 +95,14 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                    aria-invalid={errors.name ? 'true' : 'false'}
+                    className={`w-full px-4 py-3 border ${errors.name ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                    {...register('name')}
                     data-testid="contact-form-name"
                   />
+                  {errors.name && (
+                    <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -111,12 +113,14 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                    aria-invalid={errors.email ? 'true' : 'false'}
+                    className={`w-full px-4 py-3 border ${errors.email ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                    {...register('email')}
                     data-testid="contact-form-email"
                   />
+                  {errors.email && (
+                    <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -127,12 +131,14 @@ const Contact = () => {
                     type="tel"
                     id="phone"
                     name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                    aria-invalid={errors.phone ? 'true' : 'false'}
+                    className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                    {...register('phone')}
                     data-testid="contact-form-phone"
                   />
+                  {errors.phone && (
+                    <p className="mt-2 text-sm text-red-600">{errors.phone.message}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -142,9 +148,9 @@ const Contact = () => {
                   <select
                     id="service"
                     name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                    aria-invalid={errors.service ? 'true' : 'false'}
+                    className={`w-full px-4 py-3 border ${errors.service ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                    {...register('service')}
                     data-testid="contact-form-service"
                   >
                     <option value="Takarbeten">Takarbeten</option>
@@ -153,6 +159,9 @@ const Contact = () => {
                     <option value="Entreprenad">Entreprenad</option>
                     <option value="Övrigt">Övrigt</option>
                   </select>
+                  {errors.service && (
+                    <p className="mt-2 text-sm text-red-600">{errors.service.message}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -162,22 +171,27 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
                     rows={5}
-                    className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                    aria-invalid={errors.message ? 'true' : 'false'}
+                    className={`w-full px-4 py-3 border ${errors.message ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                    {...register('message')}
                     data-testid="contact-form-message"
                   ></textarea>
+                  <p className="mt-2 text-sm text-neutral/70">
+                    Beskriv ditt projekt så detaljerat som möjligt.
+                  </p>
+                  {errors.message && (
+                    <p className="mt-2 text-sm text-red-600">{errors.message.message}</p>
+                  )}
                 </div>
                 
                 <button
                   type="submit"
-                  disabled={loading}
+                  disabled={isSubmitting}
                   className="w-full bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
                   data-testid="contact-form-submit"
                 >
-                  {loading ? (
+                  {isSubmitting ? (
                     'Skickar...'
                   ) : (
                     <>

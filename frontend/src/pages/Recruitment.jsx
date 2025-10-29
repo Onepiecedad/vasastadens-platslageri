@@ -3,51 +3,40 @@ import axios from 'axios';
 import Hero from '@/components/Hero';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Send, CheckCircle, Briefcase } from 'lucide-react';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import { useScrollToHero } from '@/hooks/useScrollToHero';
+import { API_BASE } from '@/lib/api';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { jobApplicationSchema, formDefaultValues } from '@/lib/validation';
 
 const Recruitment = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    position: 'Plåtslagare',
-    experience: '',
-    message: ''
-  });
-  const [loading, setLoading] = useState(false);
+  useScrollToHero([]);
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
-  
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-  
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(jobApplicationSchema),
+    defaultValues: formDefaultValues.job,
+    mode: 'onBlur',
+  });
+
+  const onSubmit = async (values) => {
+    setErrorMessage('');
+    setSubmitted(false);
     try {
-      await axios.post(`${API}/jobs`, formData);
+      await axios.post(`${API_BASE}/jobs`, values);
       setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        position: 'Plåtslagare',
-        experience: '',
-        message: ''
-      });
+      reset(formDefaultValues.job, { keepDefaultValues: true });
     } catch (err) {
-      setError('Ett fel uppstod. Vänligen försök igen.');
+      const detail =
+        err.response?.data?.detail || 'Ett fel uppstod. Vänligen försök igen.';
+      setErrorMessage(detail);
       console.error('Error submitting application:', err);
-    } finally {
-      setLoading(false);
     }
   };
   
@@ -69,7 +58,7 @@ const Recruitment = () => {
       <Hero
         title="Arbeta Hos Oss"
         subtitle="Bli en del av vårt team"
-        imageUrl="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80"
+        imageUrl="/images/facade-team.png"
         height="min-h-[360px] md:h-[400px]"
       />
       
@@ -138,13 +127,26 @@ const Recruitment = () => {
               </div>
             )}
             
-            {error && (
+            {errorMessage && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 text-red-700" data-testid="error-message">
-                {error}
+                {errorMessage}
               </div>
             )}
             
-            <form onSubmit={handleSubmit} className="space-y-6 bg-light p-6 sm:p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay" data-testid="job-application-form">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6 bg-light p-6 sm:p-8 rounded-2xl border border-[#D1D5DB]/60 shadow-xl animate-fade-in-up-delay"
+              data-testid="job-application-form"
+              noValidate
+            >
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+                {...register('honeypot')}
+              />
               <div>
                 <label htmlFor="name" className="block text-neutral font-medium mb-2">
                   Namn *
@@ -153,12 +155,14 @@ const Recruitment = () => {
                   type="text"
                   id="name"
                   name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                  aria-invalid={errors.name ? 'true' : 'false'}
+                  className={`w-full px-4 py-3 border ${errors.name ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                  {...register('name')}
                   data-testid="job-form-name"
                 />
+                {errors.name && (
+                  <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>
+                )}
               </div>
               
               <div>
@@ -169,12 +173,14 @@ const Recruitment = () => {
                   type="email"
                   id="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                  aria-invalid={errors.email ? 'true' : 'false'}
+                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                  {...register('email')}
                   data-testid="job-form-email"
                 />
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
+                )}
               </div>
               
               <div>
@@ -185,12 +191,14 @@ const Recruitment = () => {
                   type="tel"
                   id="phone"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                  aria-invalid={errors.phone ? 'true' : 'false'}
+                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                  {...register('phone')}
                   data-testid="job-form-phone"
                 />
+                {errors.phone && (
+                  <p className="mt-2 text-sm text-red-600">{errors.phone.message}</p>
+                )}
               </div>
               
               <div>
@@ -200,15 +208,18 @@ const Recruitment = () => {
                 <select
                   id="position"
                   name="position"
-                  value={formData.position}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                  aria-invalid={errors.position ? 'true' : 'false'}
+                  className={`w-full px-4 py-3 border ${errors.position ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                  {...register('position')}
                   data-testid="job-form-position"
                 >
                   <option value="Plåtslagare">Plåtslagare</option>
                   <option value="Lärling Plåtslagare">Lärling Plåtslagare</option>
                   <option value="Annan position">Annan position</option>
                 </select>
+                {errors.position && (
+                  <p className="mt-2 text-sm text-red-600">{errors.position.message}</p>
+                )}
               </div>
               
               <div>
@@ -219,13 +230,15 @@ const Recruitment = () => {
                   type="text"
                   id="experience"
                   name="experience"
-                  value={formData.experience}
-                  onChange={handleChange}
-                  required
                   placeholder="T.ex. 5 år"
-                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                  aria-invalid={errors.experience ? 'true' : 'false'}
+                  className={`w-full px-4 py-3 border ${errors.experience ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                  {...register('experience')}
                   data-testid="job-form-experience"
                 />
+                {errors.experience && (
+                  <p className="mt-2 text-sm text-red-600">{errors.experience.message}</p>
+                )}
               </div>
               
               <div>
@@ -235,23 +248,28 @@ const Recruitment = () => {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
                   rows={6}
                   placeholder="Berätta lite om dig själv och varför du vill arbeta hos oss..."
-                  className="w-full px-4 py-3 border border-[#D1D5DB] rounded-xl focus:ring-2 focus:ring-copper focus:border-copper/80 transition-shadow"
+                  aria-invalid={errors.message ? 'true' : 'false'}
+                  className={`w-full px-4 py-3 border ${errors.message ? 'border-red-400 focus:ring-red-500 focus:border-red-500' : 'border-[#D1D5DB] focus:ring-2 focus:ring-copper focus:border-copper/80'} rounded-xl transition-shadow`}
+                  {...register('message')}
                   data-testid="job-form-message"
                 ></textarea>
+                <p className="mt-2 text-sm text-neutral/70">
+                  Beskriv relevant erfarenhet, utbildning och varför du vill arbeta hos oss.
+                </p>
+                {errors.message && (
+                  <p className="mt-2 text-sm text-red-600">{errors.message.message}</p>
+                )}
               </div>
               
               <button
                 type="submit"
-                disabled={loading}
+                disabled={isSubmitting}
                 className="w-full bg-copper hover:bg-copper-dark text-white px-7 py-3.5 sm:px-9 sm:py-4 rounded-full text-lg font-semibold transition-all flex items-center justify-center shadow-lg shadow-black/10 disabled:opacity-60"
                 data-testid="job-form-submit"
               >
-                {loading ? (
+                {isSubmitting ? (
                   'Skickar...'
                 ) : (
                   <>

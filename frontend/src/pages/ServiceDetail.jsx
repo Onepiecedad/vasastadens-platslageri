@@ -4,15 +4,17 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import { CheckCircle, Phone } from 'lucide-react';
 import NotFound from './NotFound';
+import { useScrollToHero } from '@/hooks/useScrollToHero';
 
 const ServiceDetail = () => {
   const { serviceSlug } = useParams();
+  useScrollToHero([serviceSlug]);
   
   const servicesData = {
     takarbeten: {
       title: 'Takarbeten',
       subtitle: 'Professionella taklösningar för alla typer av byggnader',
-      image: 'https://images.unsplash.com/photo-1643225523483-e2c434191bba?w=1920&q=80',
+      image: '/images/roof-before-after.png',
       description: 'Våra erfarna plåtslagare utför alla typer av takarbeten – från nybyggnation till renovering av befintliga tak. Vi använder endast högkvalitativa material från ledande tillverkare och garanterar ett hållbart resultat.',
       services: [
         'Nybyggnation av tak',
@@ -35,7 +37,7 @@ const ServiceDetail = () => {
     fasadplat: {
       title: 'Fasadplåt',
       subtitle: 'Moderna fasadlösningar i aluminium och stål',
-      image: 'https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?w=1920&q=80',
+      image: '/images/facade-team.png',
       description: 'Vi monterar och renoverar fasader i plåt för både bostäder och kommersiella byggnader. Våra fasadlösningar är både estetiskt tilltalande och underhållsfria, med lång livslängd.',
       services: [
         'Fasadplåt i aluminium',
@@ -58,7 +60,7 @@ const ServiceDetail = () => {
     service: {
       title: 'Service & Underhåll',
       subtitle: 'Regelbundet underhåll för lång livslängd',
-      image: 'https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=1920&q=80',
+      image: '/images/gutter-service.png',
       description: 'Regelbundet underhåll är nyckeln till att förlänga livslängden på ditt tak och din fasad. Vi erbjuder servicekontrakt och akuta reparationer för att se till att din fastighet alltid är i toppskick.',
       services: [
         'Regelbunden takinspektion',
@@ -81,7 +83,7 @@ const ServiceDetail = () => {
     entreprenad: {
       title: 'Entreprenad',
       subtitle: 'Kompletta entreprenadjobb från start till mål',
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80',
+      image: '/images/glass-facade-reflection.png',
       description: 'Vi tar hand om hela entreprenadjobbet – från projektering och planering till slutförande. Med vår långa erfarenhet av stora projekt kan du lita på att vi levererar i tid och enligt budget.',
       services: [
         'Totalentreprenad',

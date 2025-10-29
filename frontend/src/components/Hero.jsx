@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = ({ title, subtitle, imageUrl, ctaText, ctaLink, height = 'min-h-[420px] md:h-[600px]' }) => {
   return (
-    <div className={`relative ${height} flex items-center justify-center overflow-hidden`} data-testid="hero-section">
+    <div id="page-hero" className={`relative ${height} flex items-center justify-center overflow-hidden`} data-testid="hero-section">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"

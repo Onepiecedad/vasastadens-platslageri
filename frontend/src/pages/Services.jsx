@@ -2,35 +2,37 @@ import Hero from '@/components/Hero';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { useScrollToHero } from '@/hooks/useScrollToHero';
 
 const Services = () => {
+  useScrollToHero([]);
   const services = [
     {
       slug: 'takarbeten',
       title: 'Takarbeten',
       description: 'Professionella taklösningar för alla typer av byggnader. Vi hanterar allt från nybyggnation till renovering av befintliga tak.',
-      image: 'https://images.unsplash.com/photo-1643225523483-e2c434191bba?w=600&q=80',
+      image: '/images/roof-before-after.png',
       features: ['Nybyggnation', 'Takrenovering', 'Taktäckning', 'Plåttak']
     },
     {
       slug: 'fasadplat',
       title: 'Fasadplåt',
       description: 'Moderna och hållbara fasadlösningar i aluminium och stålplåt. Perfekt för bostäder och kommersiella fastigheter.',
-      image: 'https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?w=600&q=80',
+      image: '/images/facade-team.png',
       features: ['Aluminiumplåt', 'Stålplåt', 'Fasadrenovering', 'Moderna designer']
     },
     {
       slug: 'service',
       title: 'Service & Underhåll',
       description: 'Regelbundet underhåll och snabba reparationer. Vi ser till att ditt tak och din fasad håller länge.',
-      image: 'https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=600&q=80',
+      image: '/images/gutter-service.png',
       features: ['Regelbunden service', 'Akuta reparationer', 'Besiktning', 'Förebyggande underhåll']
     },
     {
       slug: 'entreprenad',
       title: 'Entreprenad',
       description: 'Kompletta entreprenadjobb där vi tar ansvar för hela projektet från start till mål.',
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80',
+      image: '/images/glass-facade-reflection.png',
       features: ['Projektledning', 'Totalentreprenad', 'Nybyggnation', 'Renovering']
     },
   ];
@@ -40,7 +42,7 @@ const Services = () => {
       <Hero
         title="Våra Tjänster"
         subtitle="Kompletta lösningar för tak och fasad"
-        imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
+        imageUrl="/images/facade-team.png"
         height="min-h-[360px] md:h-[400px]"
       />
       

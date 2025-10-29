@@ -2,8 +2,10 @@ import Hero from '@/components/Hero';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { CheckCircle, Users, Award, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useScrollToHero } from '@/hooks/useScrollToHero';
 
 const About = () => {
+  useScrollToHero([]);
   const values = [
     {
       icon: <Award className="text-copper" size={40} />,
@@ -23,7 +25,7 @@ const About = () => {
   ];
   
   const milestones = [
-    { year: '1973', event: 'Vasastadens Plåtslageri grundas i Göteborg' },
+    { year: '1973', event: 'Vasastadens Bleck & Plåtslageri grundas i Göteborg' },
     { year: '1985', event: 'Expansion till fasadarbeten och större entreprenadjobb' },
     { year: '2000', event: 'Certifiering enligt branschstandarder' },
     { year: '2010', event: 'Över 30 anställda hantverkare' },
@@ -33,9 +35,9 @@ const About = () => {
   return (
     <div data-testid="about-page">
       <Hero
-        title="Om Vasastadens Plåtslageri"
+        title="Om Vasastadens Bleck &amp; Plåtslageri"
         subtitle="Över 50 års erfarenhet av kvalitetsarbete"
-        imageUrl="https://images.unsplash.com/photo-1635424709845-3a85ad5e1f5e?w=1920&q=80"
+        imageUrl="/images/goteborg-skyline-sunset.png"
         height="min-h-[360px] md:h-[400px]"
       />
       
@@ -48,7 +50,7 @@ const About = () => {
             <div className="animate-fade-in-up">
               <h2 className="text-4xl md:text-5xl text-granite mb-6" data-testid="story-title">Vår Historia</h2>
               <p className="text-lg text-neutral mb-6 leading-relaxed">
-                Sedan 1973 har Vasastadens Plåtslageri varit en pålitlig partner för tak- och fasadarbeten i Göteborg och omnejd. Vad som började som ett litet familjeföretag har vuxit till en av regionens mest respekterade aktörer inom branschen.
+                Sedan 1973 har Vasastadens Bleck &amp; Plåtslageri varit en pålitlig partner för tak- och fasadarbeten i Göteborg och omnejd. Vad som började som ett litet familjeföretag har vuxit till en av regionens mest respekterade aktörer inom branschen.
               </p>
               <p className="text-lg text-neutral mb-6 leading-relaxed">
                 Genom åren har vi byggt vårt rykte på kvalitet, pålitlighet och hårt arbete. Våra erfarna hantverkare kombinerar traditionellt hantverk med moderna tekniker för att leverera resultat som håller över tid.
@@ -59,8 +61,8 @@ const About = () => {
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl animate-fade-in-up-delay">
               <img
-                src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=800&q=80"
-                alt="Vasastadens Plåtslageri team"
+                src="/images/facade-team.png"
+                alt="Team från Vasastadens Bleck &amp; Plåtslageri på fasadställning"
                 className="w-full h-full object-cover"
               />
             </div>

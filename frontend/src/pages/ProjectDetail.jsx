@@ -6,15 +6,15 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { MapPin, Calendar, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import NotFound from './NotFound';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+import { useScrollToHero } from '@/hooks/useScrollToHero';
+import { API_BASE } from '@/lib/api';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  useScrollToHero([slug]);
   
   useEffect(() => {
     fetchProject();
@@ -22,7 +22,7 @@ const ProjectDetail = () => {
   
   const fetchProject = async () => {
     try {
-      const response = await axios.get(`${API}/projects/${slug}`);
+      const response = await axios.get(`${API_BASE}/projects/${slug}`);
       setProject(response.data);
     } catch (error) {
       console.error('Error fetching project:', error);
@@ -52,7 +52,7 @@ const ProjectDetail = () => {
       <Hero
         title={project.title}
         subtitle={`${project.location} · ${project.year}`}
-        imageUrl={project.imageUrl || 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80'}
+        imageUrl={project.imageUrl || '/images/goteborg-skyline-sunset.png'}
         height="min-h-[380px] md:h-[500px]"
       />
       

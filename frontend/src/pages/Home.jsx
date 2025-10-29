@@ -1,8 +1,10 @@
 import Hero from '@/components/Hero';
+import { useScrollToHero } from '@/hooks/useScrollToHero';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Phone } from 'lucide-react';
 
 const Home = () => {
+  useScrollToHero([]);
   const services = [
     {
       title: 'Takarbeten',
@@ -45,7 +47,7 @@ const Home = () => {
       <Hero
         title="Professionella Tak- och Fasadlösningar i Göteborg"
         subtitle="Sedan 1973 levererar vi högkvalitativt hantverksarbete för bostäder och företag."
-        imageUrl="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?w=1920&q=80"
+        imageUrl="/images/hero-roofer-goteborg.png"
         ctaText="Begär kostnadsfri offert"
         ctaLink="/kontakt"
       />
@@ -89,7 +91,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-up">
               <h2 className="text-4xl md:text-5xl text-granite mb-6" data-testid="why-choose-us-title">
-                Varför Välja Vasastadens Plåtslageri?
+                Varför Välja Vasastadens Bleck &amp; Plåtslageri?
               </h2>
               <p className="text-lg text-neutral mb-8">
                 Sedan 1973 har vi byggt vår verksamhet på kvalitet, pålitlighet och nöjda kunder. Våra erfarna hantverkare levererar alltid arbete av högsta kvalitet.
@@ -105,8 +107,8 @@ const Home = () => {
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl animate-fade-in-up-delay">
               <img
-                src="https://images.unsplash.com/photo-1635424709845-3a85ad5e1f5e?w=800&q=80"
-                alt="Team på arbetsplats"
+                src="/images/roof-water-beading.png"
+                alt="Detaljbild av plåttak med vattenpärlor"
                 className="w-full h-full object-cover"
               />
             </div>

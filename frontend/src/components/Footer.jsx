@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-semibold mb-4 tracking-[0.1em] uppercase">
-              <span className="text-copper">Vasastadens</span> Plåtslageri
+            <h3 className="text-xl font-semibold mb-4 tracking-[0.1em] uppercase text-copper">
+              Vasastadens Bleck &amp; Plåtslageri
             </h3>
             <p className="text-white/70 text-sm leading-relaxed">
               Sedan 1973 har vi levererat kvalitetsarbete inom tak och fasad i Göteborg och omnejd.
@@ -99,7 +99,7 @@ const Footer = () => {
         
         <div className="border-t border-white/10 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/60 text-sm">
-            © {new Date().getFullYear()} Vasastadens Plåtslageri AB. Alla rättigheter förbehållna.
+            © {new Date().getFullYear()} Vasastadens Bleck &amp; Plåtslageri AB. Alla rättigheter förbehållna.
           </p>
           <Link to="/integritet" className="text-white/60 hover:text-copper text-sm transition-colors mt-4 md:mt-0" data-testid="footer-privacy-link">
             Integritetspolicy
